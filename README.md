@@ -31,7 +31,7 @@ The application helps users manage tasks with features like prioritization, dead
 1. Clone the repository:
 
    ```
-   git clone https://github.com/your-username/task-management-dashboard.git
+   git clone https://github.com/your-username/Task-Management-Dashboard.git
    ```
 
 2. Open `index.html` in your browser
