@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskFlow | Sign Up</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="signup" class="signup-shell">
+  <div class="auth-shell">
+    <header class="topbar card auth-topbar">
+      <div class="brand-lockup">
+        <div class="brand-badge">TF</div>
+        <div>
+          <h1 class="brand-mark">TaskFlow</h1>
+          <p class="brand-copy">A focused productivity workspace for modern teams and solo operators.</p>
+        </div>
+      </div>
+
+      <button class="icon-button" type="button" data-theme-toggle>
+        <span data-theme-icon aria-hidden="true">☼</span>
+        <span data-theme-label>Light</span>
+      </button>
+    </header>
+
+    <div class="auth-layout">
+      <section class="auth-marketing card">
+        <div class="auth-hero">
+          <p class="page-kicker">Create account</p>
+          <h2 class="page-title">Set up your workspace</h2>
+          <p class="auth-note">Create an account to keep your dashboard, tasks, and profile saved locally on this device.</p>
+        </div>
+
+        <div class="auth-steps">
+          <div class="step-row"><span class="step-dot"></span>One login for your dashboard, tasks, profile, and about pages.</div>
+          <div class="step-row"><span class="step-dot"></span>Tasks stay mapped to your account with localStorage persistence.</div>
+          <div class="step-row"><span class="step-dot"></span>Theme preference and session stay in sync across pages.</div>
+        </div>
+      </section>
+
+      <section class="auth-panel card">
+        <div>
+          <p class="page-kicker">Sign up</p>
+          <h2 class="page-title">Create your account</h2>
+          <p class="auth-note">Use a real name, email, and a password with at least six characters.</p>
+        </div>
+
+        <div id="signupError" class="alert hidden" role="alert"></div>
+
+        <form id="signupForm" class="auth-form">
+          <label class="field">
+            <label for="signupName">Name</label>
+            <input id="signupName" type="text" autocomplete="name" placeholder="Alex Morgan" required />
+          </label>
+
+          <label class="field">
+            <label for="signupEmail">Email</label>
+            <input id="signupEmail" type="email" autocomplete="email" placeholder="name@company.com" required />
+          </label>
+
+          <label class="field">
+            <label for="signupPassword">Password</label>
+            <input id="signupPassword" type="password" autocomplete="new-password" placeholder="Create a password" required />
+          </label>
+
+          <button class="button button-primary" type="submit">Create account</button>
+        </form>
+
+        <div class="auth-footer">
+          <span class="small-copy">Already have an account?</span>
+          <a href="index.html">Sign in</a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script defer src="script.js"></script>
+</body>
+</html>

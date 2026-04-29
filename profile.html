@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskFlow | Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="profile" class="app-page">
+  <div class="app-shell app-layout">
+    <aside class="sidebar card">
+      <div class="brand-lockup">
+        <div class="brand-badge">TF</div>
+        <div>
+          <h1 class="brand-mark">TaskFlow</h1>
+          <p class="brand-copy">A compact productivity dashboard built for focused work.</p>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav" aria-label="Primary">
+        <a class="nav-link" href="dashboard.html" data-nav-link="dashboard">Dashboard</a>
+        <a class="nav-link" href="tasks.html" data-nav-link="tasks">Tasks</a>
+        <a class="nav-link" href="profile.html" data-nav-link="profile">Profile</a>
+        <a class="nav-link" href="about.html" data-nav-link="about">About</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="sidebar-action" type="button" data-logout>Logout</button>
+      </div>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar card">
+        <div class="page-heading">
+          <p class="page-kicker">Account</p>
+          <h2 class="page-title">Profile</h2>
+        </div>
+
+        <div class="topbar-actions">
+          <label class="search-field" aria-label="Search tasks">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.5 4a6.5 6.5 0 104.11 11.55l4.42 4.42 1.41-1.41-4.42-4.42A6.5 6.5 0 0010.5 4zm0 2a4.5 4.5 0 110 9 4.5 4.5 0 010-9z"></path></svg>
+            <input id="globalSearchInput" data-global-search type="search" placeholder="Search tasks" />
+          </label>
+
+          <button class="icon-button" type="button" data-theme-toggle>
+            <span data-theme-icon aria-hidden="true">☼</span>
+            <span data-theme-label>Light</span>
+          </button>
+
+          <details class="profile-menu">
+            <summary class="profile-trigger">
+              <span class="avatar" data-user-avatar>A</span>
+              <span class="profile-copy">
+                <strong data-user-name>Profile</strong>
+                <small data-user-email>account</small>
+              </span>
+            </summary>
+            <div class="profile-dropdown card">
+              <a href="dashboard.html">Dashboard</a>
+              <a href="tasks.html">Tasks</a>
+              <button type="button" data-logout>Logout</button>
+            </div>
+          </details>
+        </div>
+      </header>
+
+      <main class="page-content profile-grid">
+        <section class="profile-card card">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">Identity</p>
+              <h3 class="section-title">Your account</h3>
+            </div>
+          </div>
+
+          <div class="profile-summary">
+            <div class="avatar-lg" id="profileAvatar">A</div>
+            <div class="profile-info">
+              <div class="info-line"><span>Name</span><strong id="profileDisplayName">User</strong></div>
+              <div class="info-line"><span>Email</span><strong id="profileDisplayEmail">name@company.com</strong></div>
+            </div>
+            <div class="profile-meta">
+              <span class="badge completed">Profile</span>
+              <span class="badge in-progress">Active session</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="page-section card">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">Edit</p>
+              <h3 class="section-title">Update profile</h3>
+            </div>
+            <span class="muted">Changes save locally to this browser.</span>
+          </div>
+
+          <form id="profileForm" class="form-grid">
+            <label class="field field-full">
+              <label for="profileName">Name</label>
+              <input id="profileName" type="text" autocomplete="name" required />
+            </label>
+
+            <label class="field field-full">
+              <label for="profileEmail">Email</label>
+              <input id="profileEmail" type="email" autocomplete="email" required />
+            </label>
+
+            <div class="modal-actions span-2">
+              <button class="button button-primary" type="submit">Save profile</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="grid-2 span-12">
+          <div class="info-card card">
+            <p class="section-kicker">Task stats</p>
+            <h3 class="section-title">Current workload</h3>
+            <div class="profile-actions">
+              <span class="badge high">Total <strong id="profileStatsTotal">0</strong></span>
+              <span class="badge completed">Completed <strong id="profileStatsCompleted">0</strong></span>
+            </div>
+          </div>
+
+          <div class="info-card card">
+            <p class="section-kicker">Navigation</p>
+            <h3 class="section-title">Useful links</h3>
+            <div class="auth-links">
+              <a class="link-button" href="dashboard.html">Back to dashboard</a>
+              <a class="link-button" href="tasks.html">Open tasks</a>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="toast-stack" data-toast-stack aria-live="polite" aria-atomic="true"></div>
+
+  <script defer src="script.js"></script>
+</body>
+</html>

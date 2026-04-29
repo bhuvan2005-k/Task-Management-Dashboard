@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskFlow | Tasks</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="tasks" class="app-page">
+  <div class="app-shell app-layout">
+    <aside class="sidebar card">
+      <div class="brand-lockup">
+        <div class="brand-badge">TF</div>
+        <div>
+          <h1 class="brand-mark">TaskFlow</h1>
+          <p class="brand-copy">A compact productivity dashboard built for focused work.</p>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav" aria-label="Primary">
+        <a class="nav-link" href="dashboard.html" data-nav-link="dashboard">Dashboard</a>
+        <a class="nav-link" href="tasks.html" data-nav-link="tasks">Tasks</a>
+        <a class="nav-link" href="profile.html" data-nav-link="profile">Profile</a>
+        <a class="nav-link" href="about.html" data-nav-link="about">About</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="sidebar-action" type="button" data-logout>Logout</button>
+      </div>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar card">
+        <div class="page-heading">
+          <p class="page-kicker">Task board</p>
+          <h2 class="page-title">Tasks</h2>
+        </div>
+
+        <div class="topbar-actions">
+          <label class="search-field" aria-label="Search tasks">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.5 4a6.5 6.5 0 104.11 11.55l4.42 4.42 1.41-1.41-4.42-4.42A6.5 6.5 0 0010.5 4zm0 2a4.5 4.5 0 110 9 4.5 4.5 0 010-9z"></path></svg>
+            <input id="taskSearchInput" data-global-search type="search" placeholder="Search tasks" />
+          </label>
+
+          <button class="icon-button" type="button" data-theme-toggle>
+            <span data-theme-icon aria-hidden="true">☼</span>
+            <span data-theme-label>Light</span>
+          </button>
+
+          <details class="profile-menu">
+            <summary class="profile-trigger">
+              <span class="avatar" data-user-avatar>A</span>
+              <span class="profile-copy">
+                <strong data-user-name>Profile</strong>
+                <small data-user-email>account</small>
+              </span>
+            </summary>
+            <div class="profile-dropdown card">
+              <a href="profile.html">Profile</a>
+              <a href="dashboard.html">Dashboard</a>
+              <button type="button" data-logout>Logout</button>
+            </div>
+          </details>
+        </div>
+      </header>
+
+      <main class="page-content task-board">
+        <section class="page-section card span-12">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">Create</p>
+              <h3 class="section-title">Add a task</h3>
+            </div>
+            <span class="muted">Track titles, priorities, due dates, statuses, and tags.</span>
+          </div>
+
+          <form id="taskForm" class="task-form-grid">
+            <label class="field field-full">
+              <label for="taskTitle">Title</label>
+              <input id="taskTitle" type="text" maxlength="120" placeholder="Prepare monthly review" required />
+            </label>
+
+            <label class="field">
+              <label for="taskPriority">Priority</label>
+              <select id="taskPriority">
+                <option value="high">High</option>
+                <option value="medium" selected>Medium</option>
+                <option value="low">Low</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <label for="taskStatus">Status</label>
+              <select id="taskStatus">
+                <option value="pending" selected>Pending</option>
+                <option value="in-progress">In Progress</option>
+                <option value="completed">Completed</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <label for="taskDueDate">Due date</label>
+              <input id="taskDueDate" type="date" />
+            </label>
+
+            <fieldset class="field field-full">
+              <legend>Tags</legend>
+              <div class="tag-options">
+                <label class="tag-option"><input type="checkbox" name="taskTag" value="work" checked /><span>Work</span></label>
+                <label class="tag-option"><input type="checkbox" name="taskTag" value="personal" /><span>Personal</span></label>
+                <label class="tag-option"><input type="checkbox" name="taskTag" value="urgent" /><span>Urgent</span></label>
+              </div>
+            </fieldset>
+
+            <div class="modal-actions span-2">
+              <button class="button button-primary" type="submit">Add task</button>
+              <button class="button button-secondary" type="button" onclick="document.getElementById('taskForm').reset();">Reset</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="page-section card span-12">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">Organize</p>
+              <h3 class="section-title">Filters and sort</h3>
+            </div>
+            <span id="taskCountLabel" class="task-count">0 tasks</span>
+          </div>
+
+          <div class="toolbar">
+            <div class="filter-row">
+              <label class="select-field">
+                <label for="taskStatusFilter">Status</label>
+                <select id="taskStatusFilter">
+                  <option value="all">All</option>
+                  <option value="pending">Pending</option>
+                  <option value="in-progress">In Progress</option>
+                  <option value="completed">Completed</option>
+                </select>
+              </label>
+
+              <label class="select-field">
+                <label for="taskPriorityFilter">Priority</label>
+                <select id="taskPriorityFilter">
+                  <option value="all">All</option>
+                  <option value="high">High</option>
+                  <option value="medium">Medium</option>
+                  <option value="low">Low</option>
+                </select>
+              </label>
+
+              <label class="select-field">
+                <label for="taskSortSelect">Sort</label>
+                <select id="taskSortSelect">
+                  <option value="dueDate">Due date</option>
+                  <option value="priority">Priority</option>
+                  <option value="createdAt">Newest</option>
+                </select>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <section class="page-section card span-12">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">List</p>
+              <h3 class="section-title">Task list</h3>
+            </div>
+            <span class="muted">Overdue tasks are highlighted in red.</span>
+          </div>
+
+          <div id="taskList" class="task-list"></div>
+          <div id="taskEmptyState" class="empty-state hidden task-list-empty">
+            <div class="empty-icon">◎</div>
+            <h3 class="empty-title">No tasks found</h3>
+            <p>Try a different filter or create a new task to get started.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div id="taskEditorOverlay" class="modal-overlay hidden" aria-hidden="true">
+    <div class="modal card" role="dialog" aria-modal="true" aria-labelledby="taskEditorTitle">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Edit</p>
+          <h3 id="taskEditorTitle" class="section-title">Update task</h3>
+        </div>
+        <button id="closeTaskEditor" class="icon-button modal-close" type="button" aria-label="Close editor">×</button>
+      </div>
+
+      <form id="taskEditorForm" class="modal-form">
+        <input id="taskEditId" type="hidden" />
+
+        <label class="field field-full">
+          <label for="taskEditTitle">Title</label>
+          <input id="taskEditTitle" type="text" maxlength="120" required />
+        </label>
+
+        <label class="field">
+          <label for="taskEditPriority">Priority</label>
+          <select id="taskEditPriority">
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <label for="taskEditStatus">Status</label>
+          <select id="taskEditStatus">
+            <option value="pending">Pending</option>
+            <option value="in-progress">In Progress</option>
+            <option value="completed">Completed</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <label for="taskEditDueDate">Due date</label>
+          <input id="taskEditDueDate" type="date" />
+        </label>
+
+        <fieldset class="field field-full">
+          <legend>Tags</legend>
+          <div class="tag-options">
+            <label class="tag-option"><input type="checkbox" name="taskEditTag" value="work" /><span>Work</span></label>
+            <label class="tag-option"><input type="checkbox" name="taskEditTag" value="personal" /><span>Personal</span></label>
+            <label class="tag-option"><input type="checkbox" name="taskEditTag" value="urgent" /><span>Urgent</span></label>
+          </div>
+        </fieldset>
+
+        <div class="modal-actions span-2">
+          <button class="button button-secondary" id="cancelTaskEditor" type="button">Cancel</button>
+          <button class="button button-primary" type="submit">Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast-stack" data-toast-stack aria-live="polite" aria-atomic="true"></div>
+
+  <script defer src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskFlow | About</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="about" class="app-page">
+  <div class="app-shell app-layout">
+    <aside class="sidebar card">
+      <div class="brand-lockup">
+        <div class="brand-badge">TF</div>
+        <div>
+          <h1 class="brand-mark">TaskFlow</h1>
+          <p class="brand-copy">A compact productivity dashboard built for focused work.</p>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav" aria-label="Primary">
+        <a class="nav-link" href="dashboard.html" data-nav-link="dashboard">Dashboard</a>
+        <a class="nav-link" href="tasks.html" data-nav-link="tasks">Tasks</a>
+        <a class="nav-link" href="profile.html" data-nav-link="profile">Profile</a>
+        <a class="nav-link" href="about.html" data-nav-link="about">About</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="sidebar-action" type="button" data-logout>Logout</button>
+      </div>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar card">
+        <div class="page-heading">
+          <p class="page-kicker">Product</p>
+          <h2 class="page-title">About TaskFlow</h2>
+        </div>
+
+        <div class="topbar-actions">
+          <label class="search-field" aria-label="Search tasks">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.5 4a6.5 6.5 0 104.11 11.55l4.42 4.42 1.41-1.41-4.42-4.42A6.5 6.5 0 0010.5 4zm0 2a4.5 4.5 0 110 9 4.5 4.5 0 010-9z"></path></svg>
+            <input id="globalSearchInput" data-global-search type="search" placeholder="Search tasks" />
+          </label>
+
+          <button class="icon-button" type="button" data-theme-toggle>
+            <span data-theme-icon aria-hidden="true">☼</span>
+            <span data-theme-label>Light</span>
+          </button>
+
+          <details class="profile-menu">
+            <summary class="profile-trigger">
+              <span class="avatar" data-user-avatar>A</span>
+              <span class="profile-copy">
+                <strong data-user-name>Profile</strong>
+                <small data-user-email>account</small>
+              </span>
+            </summary>
+            <div class="profile-dropdown card">
+              <a href="dashboard.html">Dashboard</a>
+              <a href="profile.html">Profile</a>
+              <button type="button" data-logout>Logout</button>
+            </div>
+          </details>
+        </div>
+      </header>
+
+      <main class="page-content about-grid">
+        <section class="page-section card span-12">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">Purpose</p>
+              <h3 class="section-title">Why this app exists</h3>
+            </div>
+          </div>
+          <p class="muted">TaskFlow is a small, focused productivity dashboard for managing work without the clutter of a generic to-do list. It keeps the overview, tasks, profile, and information pages separated so the experience feels closer to a real SaaS tool.</p>
+        </section>
+
+        <section class="feature-card card">
+          <p class="section-kicker">Workflow</p>
+          <h3 class="feature-title">How it helps</h3>
+          <ul class="feature-list">
+            <li>Shows a fast overview on the dashboard.</li>
+            <li>Keeps task editing and sorting inside one work area.</li>
+            <li>Stores user, task, and theme data in localStorage.</li>
+          </ul>
+        </section>
+
+        <section class="feature-card card">
+          <p class="section-kicker">Features</p>
+          <h3 class="feature-title">What you get</h3>
+          <ul class="feature-list">
+            <li>Login and signup flow with a persisted session.</li>
+            <li>Task status, tags, overdue alerts, and toast feedback.</li>
+            <li>Responsive navigation and light/dark themes across pages.</li>
+          </ul>
+        </section>
+
+        <section class="feature-card card">
+          <p class="section-kicker">Design</p>
+          <h3 class="feature-title">Why it feels realistic</h3>
+          <ul class="feature-list">
+            <li>Minimal layouts with clear hierarchy and spacing.</li>
+            <li>Distinct overview and work pages instead of a crowded single screen.</li>
+            <li>Consistent app shell and controls on every authenticated page.</li>
+          </ul>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="toast-stack" data-toast-stack aria-live="polite" aria-atomic="true"></div>
+
+  <script defer src="script.js"></script>
+</body>
+</html>
